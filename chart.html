@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - AirRefinery</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="index.html">AirRefinery</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <form
+        class="
+          d-none d-md-inline-block
+          form-inline
+          ms-auto
+          me-0 me-md-3
+          my-2 my-md-0
+        "
+      ></form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <!--<div class="sb-sidenav-menu-heading">Core</div> -->
+
+              <a class="nav-link" href="chart.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                Chart
+              </a>
+              <a class="nav-link" href="airflow.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-thermometer-half"></i>
+                </div>
+                CO2-Airflow Estimate
+              </a>
+              <a class="nav-link" href="config.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                Configuration
+              </a>
+            </div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            User 1
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid px-4">
+            <h2 class="my-4">Air Refinery Inc</h2>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="card border-0 mb-4 shadow-sm">
+                  <div class="card-header">
+                    <!-- <i class="fas fa-chart-area me-1"></i>
+                    Data -->
+                  </div>
+                  <div class="card-body">
+                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                  </div>
+                  <div class="card-footer">
+                    <a
+                      class="btn btn-primary m-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#dataseries"
+                    >
+                      Select Data Series</a
+                    >
+                    <a
+                      class="btn btn-primary m-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bounce"
+                    >
+                      Set Upper & Lower Bounds</a
+                    >
+                    <a class="btn btn-primary m-2"> Apply Trend Line</a>
+                    <a
+                      class="btn btn-primary m-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#dentries"
+                    >
+                      Set Display Entries</a
+                    >
+                    <a
+                      class="btn btn-primary m-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#freq"
+                    >
+                      Set Update Freq</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-xl-12">
+                <nav class="nav nav-pills flex-column flex-sm-row">
+                  <a
+                    class="flex-sm-fill text-sm-center nav-link active"
+                    aria-current="page"
+                    href="#"
+                    >Select Data Series</a
+                  >
+                  <a class="flex-sm-fill text-sm-center nav-link" href="#"
+                    >Set Upper & Lower Bounds</a
+                  >
+                  <a class="flex-sm-fill text-sm-center nav-link" href="#"
+                    >Apply Trend Line</a
+                  >
+                  <a class="flex-sm-fill text-sm-center nav-link" href="#"
+                    >Set Display Entries</a
+                  >
+                  <a class="flex-sm-fill text-sm-center nav-link" href="#"
+                    >Set Update Freq</a
+                  >
+                </nav>
+              </div> -->
+
+              <!--
+             <div class="col-xl-12">
+                <a
+                  class="btn btn-primary m-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#dataseries"
+                >
+                  Select Data Series</a
+                >
+                <a
+                  class="btn btn-primary m-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#bounce"
+                >
+                  Set Upper & Lower Bounds</a
+                >
+                <a class="btn btn-primary m-2"> Apply Trend Line</a>
+                <a
+                  class="btn btn-primary m-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#dentries"
+                >
+                  Set Display Entries</a
+                >
+                <a
+                  class="btn btn-primary m-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#freq"
+                >
+                  Set Update Freq</a
+                >
+             </div> 
+            --></div>
+          </div>
+        </main>
+        <footer class="py-4 mt-auto">
+          <div class="container-fluid px-4">
+            <div class="d-flex justify-content-end small">
+              <div class="text-muted">Copyright &copy; AirRefinery 2021</div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- modal data source -->
+    <div
+      class="modal fade"
+      id="dataseries"
+      tabindex="-1"
+      aria-labelledby="dataseries"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dataseries">Select Data Source</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Source 1
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                checked
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Source 2
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // Modal data source -->
+
+    <!-- modal Upper & Lower Bounce -->
+    <div
+      class="modal fade"
+      id="bounce"
+      tabindex="-1"
+      aria-labelledby="bounce"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bounce">Set Upper & Lower Bounce</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Upper Bounce</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Lower Bounce</label>
+                <input type="text" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // Modal Upper & Lower Bounce -->
+
+    <!-- modal Display Entries -->
+    <div
+      class="modal fade"
+      id="dentries"
+      tabindex="-1"
+      aria-labelledby="dentries"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dentries">Display Entries</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Label</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Label</label>
+                <input type="text" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // Modal Display Entries -->
+
+    <!-- modal Update Freq -->
+    <div
+      class="modal fade"
+      id="freq"
+      tabindex="-1"
+      aria-labelledby="freq"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="freq">Update Freq</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Label</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Label</label>
+                <input type="text" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // Modal Display Entries -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/datatables-simple-demo.js"></script>
+  </body>
+</html>
